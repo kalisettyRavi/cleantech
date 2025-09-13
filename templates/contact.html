@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact - CleanTech</title>
+    <style>
+        body {
+            background-image: url('{{ url_for('static', filename='contact.jpg') }}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: white;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.75);
+            padding: 50px;
+            border-radius: 16px;
+            max-width: 800px;
+            margin: 80px auto;
+            text-align: center;
+        }
+        a {
+            color: #ffd700;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Contact Us</h1>
+        <p>We'd love to hear from you!</p>
+        <ul>
+            <li>Email: <a href="mailto:support@cleantech.ai">support@cleantech.ai</a></li>
+            <li>Phone: +91-9876543210</li>
+            <li>Address: CleanTech HQ, Eco Park, Kadapa, India</li>
+        </ul>
+        <a href="/">Back to Home</a>
+    </div>
+</body>
+</html>

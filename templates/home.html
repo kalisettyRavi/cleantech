@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Municipal Waste Classification - CleanTech</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            background-image: url('https://taraenergy.com/wp-content/uploads/2023/02/waste-and-landfill-image-used-for-energy.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 12px;
+            margin: 60px auto;
+            max-width: 850px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        .accuracy {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            margin-top: 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            color: #ffd700;
+        }
+        a {
+            color: #f0db4f;
+            font-weight: bold;
+            text-decoration: underline;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Municipal Waste Classification</h1>
+        <p>Welcome to CleanTech – your smart solution for efficient waste segregation. Our AI-powered system helps automate the classification of municipal solid waste into biodegradable, recyclable, and general trash using advanced computer vision techniques.</p>
+        
+        <div class="accuracy">
+            Model Accuracy: {{ accuracy }}%
+        </div>
+
+        <br>
+        <a href="/classify">Try the Classifier</a> |
+        <a href="/about">About Us</a> |
+        <a href="/contact">Contact</a>
+    </div>
+</body>
+</html>

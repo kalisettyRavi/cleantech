@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CleanTech Waste Classifier</title>
+    <style>
+        body {
+            background-image: url('{{ url_for('static', filename='ewaste.jpg') }}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.75);
+            padding: 50px;
+            border-radius: 16px;
+            max-width: 800px;
+            margin: 80px auto;
+            text-align: center;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+        }
+        h1 { margin-bottom: 20px; }
+        input[type="file"], input[type="submit"] {
+            margin: 10px;
+            padding: 10px;
+            font-size: 1em;
+        }
+        .result img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        .confidence-table {
+            margin-top: 20px;
+            text-align: left;
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+        }
+        .confidence-table th, .confidence-table td {
+            padding: 6px 12px;
+        }
+        a {
+            color: #ffd700;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Waste Classification</h1>
+        <form action="/predict" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" required>
+            <input type="submit" value="Classify">
+        </form>
+
+        {% if prediction %}
+        <div class="result">
+            <h2>Prediction: {{ prediction }}</h2>
+
+            {% if confidence_scores %}
+            <div class="confidence-table">
+                <h3>Confidence Scores:</h3>
+                <table>
+                    {% for class, score in confidence_scores.items() %}
+                    <tr>
+                        <td><strong>{{ class|capitalize }}</strong></td>
+                        <td>{{ score }}%</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            {% endif %}
+
+            <img src="{{ url_for('static', filename='uploads/' + filename) }}" alt="Uploaded Image">
+            <br><br>
+            <a href="/">Back to Home</a>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
